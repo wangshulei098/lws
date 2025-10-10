@@ -32,8 +32,8 @@ import (
 )
 
 const (
-	defaultNamespace = "lws-system"
-	AnnotationPrefix = "volcano.sh/"
+	defaultNamespace        = "lws-system"
+	VolcanoAnnotationPrefix = "volcano.sh/"
 )
 
 // Sha1Hash accepts an input string and returns the 40 character SHA1 hash digest of the input string.
@@ -106,7 +106,7 @@ func CalculatePGMinResources(lws *leaderworkerset.LeaderWorkerSet) corev1.Resour
 func InheritVolcanoAnnotations(lws *leaderworkerset.LeaderWorkerSet) map[string]string {
 	res := map[string]string{}
 	for k, v := range lws.Annotations {
-		if strings.HasPrefix(k, AnnotationPrefix) {
+		if strings.HasPrefix(k, VolcanoAnnotationPrefix) {
 			res[k] = v
 		}
 	}
